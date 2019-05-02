@@ -1,0 +1,6 @@
+
+public class MyJDBCTestApp {
+	public static void main(String[] args) {
+		
+	}
+}
