@@ -2,7 +2,72 @@
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Customer">
-	
-  
+
+	<resultMap type="custVO" id="custResult">
+		<id property="id" column="id" /><!-- 테이블의 키값 선언 -->
+		<result property="name" column="name" />
+		<result property="address" column="addr" />
+		<result property="tel" column="tel" />
+		<result property="gender" column="gender" />
+	</resultMap>
+
+	<insert id="insertCust" parameterType="custVO">
+		insert into customer
+		(id, name, addr, tel, gender)
+		values
+		(#{id},#{name},#{address},#{tel},#{gender})
+	</insert>
+	<update id="updateCust" parameterType="custVO">
+		update customer
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="address!=null">
+				addr=#{address},
+			</if>
+			<if test="tel!=null">
+				tel=#{tel},
+			</if>
+			<if test="gender!=null">
+				gender=#{gender}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	<delete id="deleteCust" parameterType="custVO">
+		delete from customer
+		where
+		1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</delete>
+
+	<select id="selectCust" parameterType="custVO" resultMap="custResult">
+		select id, name, addr, tel, gender
+		from customer
+	</select>
+
+	<select id="selectCustList" parameterType="custVO" resultMap="custResult">
+		select id, name, addr, tel, gender
+		from customer
+		where 1=1
+		<if test="id!=null"><!-- dynamic sql -->
+			and id=#{id}<!-- custVO의 getId -->
+		</if>
+		<if test="name!=null">
+			and name=#{name}
+		</if>
+		<if test="address!=null">
+			and addr=#{address}
+		</if>
+		<if test="tel!=null">
+			and tel=#{tel}
+		</if>
+		<if test="gender!=null">
+			and gender=#{gender}
+		</if>
+	</select>
 </mapper>
 

@@ -20,25 +20,46 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustServiceTest {
 		
 	@Resource
-	CustomerService custSevice;
-		
+	CustomerService cs;
+	CustomerVO vo = new CustomerVO();
+
 	//Customer 추가 테스트
 	@Test
 	public void testInsertCustomer() throws Exception{
-		
+		CustomerVO vo = new CustomerVO();
+		vo.setId("5");
+		vo.setName("KANG");
+		vo.setAddress("BEIJING");
+		vo.setTel("010-3987-2490");
+		vo.setGender("FEMALE");
+		cs.insertCustomer(vo);
 	}
-	
 	//Customer 리스트 출력 테스트
 	@Test
 	public void testSelectCustomerList() throws Exception{
-		
+		CustomerVO vo = new CustomerVO();
+		vo.setName("KANG");
+		vo.setAddress("BEIJING");
+		System.out.println(cs.selectCustomerList(vo));
 	}
-	
+	//Customer 업데이트 테스트
+	@Test
+	public void testUpdateCustomer() throws Exception{
+		CustomerVO vo = new CustomerVO();
+		vo.setName("PARK");
+		cs.updateCustomer(vo);
+	}
+	//Customer 단일 SELECT 테스트
+	@Test
+	public void testSelectCustomer() throws Exception{
+		CustomerVO vo = new CustomerVO();
+		System.out.println(cs.selectCustomer(vo));
+	}
 	//Customer 삭제 테스트
 	@Test
 	public void testDeleteCustomer() throws Exception{
-	
+		CustomerVO vo = new CustomerVO();
+		vo.setId("2");
+		cs.deleteCustomer(vo);
 	}
-	
-
 }

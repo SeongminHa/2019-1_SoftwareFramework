@@ -7,5 +7,5 @@
 		<property name="configLocation" value="classpath:/META-INF/sqlmap/sql-mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:/META-INF/sqlmap/mappers/lab-*.xml" />	
 	</bean>
-
+<!-- sqlSessionBeanFactory xml -->
 </beans>	

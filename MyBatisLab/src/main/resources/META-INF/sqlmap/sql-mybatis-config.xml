@@ -5,4 +5,5 @@
 	<typeAliases>
 		<typeAlias alias="custVO" type="lab.CustomerVO" />
 	</typeAliases>	
+	<!-- context-mybatis의 내용이 원래 이 파일에 존재했으나 분리 -->
 </configuration>
