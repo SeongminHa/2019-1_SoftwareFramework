@@ -13,6 +13,8 @@ public class CustomerAppTest {
 
 		CustomerService cs = (CustomerService) context.getBean("customerService");
 
+		CustomerVO vo= new CustomerVO();
+		
 		// 모두삭제
 		cs.deleteCustomer(new CustomerVO());
 
@@ -40,6 +42,14 @@ public class CustomerAppTest {
 		vo3.setTel("010-1111-4444");
 		vo3.setGender("FEMALE");
 		cs.insertCustomer(vo3);
+		
+		CustomerVO vo4 = new CustomerVO();
+		vo4.setId("4");
+		vo4.setName("HA");
+		vo4.setAddress("LIU");
+		vo4.setTel("010-1111-8899");
+		vo4.setGender("MALE");
+		cs.insertCustomer(vo4);
 
 		// UPDATE 테스트
 		vo1.setName("PARK");
@@ -47,18 +57,19 @@ public class CustomerAppTest {
 		
 		// SELECT 테스트
 		List<CustomerVO> resultList1 = cs.selectCustomer(new CustomerVO());
-		System.out.println("Select Result: "+resultList1);
+		System.out.println("Select Result: "+resultList1.size());
 		
 		// SELECTLIST 테스트
-		List<CustomerVO> resultList = cs.selectCustomerList(new CustomerVO());// 빈것 넣어주면 where 조건에 아무것도 할당 x
+		vo.setName("HA");
+		List<CustomerVO> resultList = cs.selectCustomerList(vo);// 빈것 넣어주면 where 조건에 아무것도 할당 x
 		System.out.println("SelectList Result: "+resultList.size());
 		
 		// DELETE 테스트
 		
-		//cs.deleteCustomer(vo2);
+		cs.deleteCustomer(vo2);
 		
 		/* for (int i=0; i<resultList.size(); i++){
 			
-		}*/
+		} */
 	}
 }
