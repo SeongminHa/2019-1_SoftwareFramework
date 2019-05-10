@@ -34,7 +34,7 @@ public class CustServiceTest {
 		vo.setGender("FEMALE");
 		cs.insertCustomer(vo);
 	}
-	//Customer 리스트 출력 테스트
+	//Customer SELECT LIST 테스트
 	@Test
 	public void testSelectCustomerList() throws Exception{
 		CustomerVO vo = new CustomerVO();
