@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public  List<CustomerVO> selectCustomer(CustomerVO customerVO) throws Exception {
+	public CustomerVO selectCustomer(CustomerVO customerVO) throws Exception {
 		return dao.selectCustomer(customerVO);
 	}
 
