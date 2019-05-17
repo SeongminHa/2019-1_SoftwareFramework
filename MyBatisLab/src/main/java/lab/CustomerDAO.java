@@ -20,7 +20,7 @@ public class CustomerDAO extends EgovAbstractMapper {
 	public int updateCustomer(CustomerVO vo){
 		return update("updateCust",vo);
 	}
-	public List<CustomerVO> selectCustomer(CustomerVO vo){
-		return selectList("selectCust",vo);
+	public CustomerVO selectCustomer(CustomerVO vo){
+		return selectOne("selectCust",vo);
 	}
 }
