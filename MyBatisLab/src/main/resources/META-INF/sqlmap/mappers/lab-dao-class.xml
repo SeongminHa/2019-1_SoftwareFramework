@@ -47,6 +47,7 @@
 	<select id="selectCust" parameterType="custVO" resultMap="custResult">
 		select id, name, addr, tel, gender
 		from customer
+		where id=#{id}
 	</select>
 
 	<select id="selectCustList" parameterType="custVO" resultMap="custResult">
