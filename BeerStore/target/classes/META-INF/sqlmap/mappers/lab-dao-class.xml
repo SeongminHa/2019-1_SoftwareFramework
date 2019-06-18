@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+
+	<resultMap type="proVO" id="proResult">
+		<id property="id" column="p_id" />
+		<result property="name" column="p_name" />
+		<result property="country" column="p_country" />
+		<result property="price" column="p_price" />
+		<result property="volume" column="p_volume" />
+	</resultMap>
+
+	<insert id="insertPro" parameterType="proVO">
+		insert into product
+		(p_id, p_name, p_country, p_price, p_volume)
+		values
+		(#{id},#{name},#{country},#{price},#{volume})
+	</insert>
+
+	<delete id="deletePro" parameterType="proVO">
+		delete from product
+		where
+		1=1
+		<if test="id!=null and id!=''">
+			and p_id=#{id}
+		</if>
+	</delete>
+
+	<select id="selectProList" parameterType="proVO" resultMap="proResult">
+		select p_id, p_name, p_country, p_price, p_volume
+		from product
+		where 1=1
+		<if test="id!=null and id!=''">
+			and p_id=#{id}
+		</if>
+		<if test="name!=null and name!=''">
+			and p_name=#{name}
+		</if>
+		<if test="country!=null and country!=''">
+			and p_country=#{country}
+		</if>
+		<if test="price!=null and price!=''">
+			and p_price=#{price}
+		</if>
+		<if test="volume!=null and volume!=''">
+			and p_volume=#{volume}
+		</if>
+	</select>
+	
+	<update id="updatePro" parameterType="proVO">
+		update product
+		<set>
+			<if test="name!=null and name!=''">
+				p_name=#{name},
+			</if>
+			<if test="country!=null and name!=''">
+				p_country=#{country},
+			</if>
+			<if test="price!=null and price!=''">
+				p_price=#{price},
+			</if>
+			<if test="volume!=null and volume!=''">
+				p_volume=#{volume}
+			</if>
+		</set>
+		where p_id=#{id}
+	</update>
+	
+	<select id="selectPro" parameterType="proVO" resultMap="proResult">
+		select p_id, p_name, p_country, p_price, p_volume
+		from product
+		where p_id=#{id}
+	</select>
+	
+	<select id="selectProLike" parameterType="proVO" resultMap="proResult">
+		select p_id, p_name, p_country, p_price, p_volume
+		from product
+		where
+		<if test="id!=null and id!=''">
+			p_id like CONCAT('%',#{id},'%')
+		</if>
+		<if test="name!=null and name!=''">
+			p_name like CONCAT('%',#{name},'%')
+		</if>
+	</select>
+</mapper>
+
