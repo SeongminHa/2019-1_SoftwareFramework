@@ -1,2 +1,2 @@
-# 2019-1_Software-Framework
-projects for Software-Framework class (Spring)
+# Beer_Website
+Beer Website based on Spring Framework
