@@ -1,2 +1,2 @@
-# Beer_Website
-Beer Website based on Spring Framework
+# spring-website
+Website based on Spring Framework
